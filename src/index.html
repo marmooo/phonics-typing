@@ -59,7 +59,6 @@
       #typePanel { word-wrap: break-word; }
       #keyboard { touch-action:manipulation; }
       .hg-theme-default .hg-button.hg-standardBtn[data-skbtn="🌏"] { max-width:80px; }
-      #gradeOption { max-height:100px; overflow-y:scroll; }
       html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
       @-moz-document url-prefix() { html[data-theme="dark"] { background-color:black; } }
     </style>
@@ -92,10 +91,41 @@
         <div class="alert alert-warning text-center">JavaScript を ON にしてください</div>
       </noscript>
       <div id="infoPanel">
-        <p>フォニックスとタイピングを<ruby>同時<rt>どうじ</rt></ruby>に<ruby>学<rt>まな</rt></ruby>ぶアプリです。
-        15こずつ<ruby>英単語<rt>えいたんご</rt></ruby>をおぼえよう！
-        </p>
-        <form id="gradeOption" name="gradeOption" class="tab-content mb-3">
+        <div class="row text-center">
+          <div class="col-sm-4 text-start pb-3">
+            <p>フォニックスとタイピングを<ruby>同時<rt>どうじ</rt></ruby>に<ruby>学<rt>まな</rt></ruby>ぶアプリです。
+            15こずつ<ruby>英単語<rt>えいたんご</rt></ruby>をおぼえよう！
+            </p>
+            <h6>キーバインド</h6>
+            <table class="table table-sm table-striped">
+              <tr><td><kbd>無変換</kbd></td><td>ローマ字表示</td></tr>
+              <tr><td><kbd>変換</kbd></td><td>音声読み上げ</td></tr>
+            </table>
+          </div>
+          <div class="col-sm-8">
+            <div class="alert alert-info">
+              <div class="row flex-wrap">
+                <div class="col p-1 h5 text-nowrap">
+                  <label><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>:</label>
+                  <span id="time" class="ms-1">120秒 / 120秒</span>
+                </div>
+                <div class="col p-1 m-auto">
+                  <button class="btn btn-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#gradeOption"
+                    aria-expanded="false" aria-controls="gradeOption">コース</button>
+                  <button id="mode" class="btn btn-secondary btn-sm ms-1">EASY</button>
+                  <div class="form-check form-check-inline form-switch text-nowrap ms-1">
+                    <input class="form-check-input" type="checkbox" id="guideSwitch">
+                    <label class="form-check-label" for="guideSwitch">ガイド</label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button id="startButton" class="btn btm-sm btn-primary">SPACE: スタート / ESC: リセット</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form id="gradeOption" name="gradeOption" class="collapse tab-content mb-3">
           <div class="mb-3 p-1 text-center border rounded">
             <label class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="radio" value="a1" checked>a (あ)
@@ -189,35 +219,6 @@
             </label>
           </div>
         </form>
-        <div class="row text-center">
-          <div class="col-sm-4 text-start pb-3">
-            <h6>キーバインド</h6>
-            <table class="table table-sm table-striped">
-              <tr><td><kbd>無変換</kbd></td><td>ローマ字表示</td></tr>
-              <tr><td><kbd>変換</kbd></td><td>音声読み上げ</td></tr>
-            </table>
-          </div>
-          <div class="col-sm-8">
-            <div class="alert alert-info">
-              <div class="row flex-wrap">
-                <div class="col p-1 h5 text-nowrap">
-                  <label><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>:</label>
-                  <span id="time" class="ms-1">120秒 / 120秒</span>
-                </div>
-                <div class="col p-1 m-auto">
-                  <button id="mode" class="btn btn-secondary btn-sm">EASY</button>
-                  <div class="form-check form-check-inline form-switch text-nowrap ms-1">
-                    <input class="form-check-input" type="checkbox" id="guideSwitch">
-                    <label class="form-check-label" for="guideSwitch">ガイド</label>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <button id="startButton" class="btn btm-sm btn-primary">SPACE: スタート / ESC: リセット</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="text-center">
         <div id="countPanel" class="d-none">
