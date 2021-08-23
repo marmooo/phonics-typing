@@ -587,7 +587,7 @@ function resizeFontSize(node) {
   var nodeHeight = calcAAOuterSize();
   var nodeWidth = infoPanel.clientWidth;
   var nodeRect = [nodeWidth, nodeHeight];
-  var textRect = getTextRect(node.innerText, fontSize, font, lineHeight);
+  var textRect = getTextRect(node.textContent, fontSize, font, lineHeight);
   var paddingRect = getPaddingRect(style);
 
   // https://stackoverflow.com/questions/46653569/
@@ -640,14 +640,14 @@ function countdown() {
   playPanel.classList.add('d-none');
   countPanel.classList.remove('d-none');
   scorePanel.classList.add('d-none');
-  counter.innerText = 3;
+  counter.textContent = 3;
   var timer = setInterval(function(){
     var counter = document.getElementById('counter');
     var colors = ['skyblue', 'greenyellow', 'violet', 'tomato'];
-    if (parseInt(counter.innerText) > 1) {
-      var t = parseInt(counter.innerText) - 1;
+    if (parseInt(counter.textContent) > 1) {
+      var t = parseInt(counter.textContent) - 1;
       counter.style.backgroundColor = colors[t];
-      counter.innerText = t;
+      counter.textContent = t;
     } else {
       clearInterval(timer);
       document.getElementById('guideSwitch').disabled = false;
@@ -675,10 +675,10 @@ function startKeyEvent(event) {
 function startTypeTimer() {
   var timeNode = document.getElementById('time');
   typeTimer = setInterval(function() {
-    var arr = timeNode.innerText.split('秒 /');
+    var arr = timeNode.textContent.split('秒 /');
     var t = parseInt(arr[0]);
     if (t > 0) {
-      timeNode.innerText = (t-1) + '秒 /' + arr[1];
+      timeNode.textContent = (t-1) + '秒 /' + arr[1];
     } else {
       clearInterval(typeTimer);
       bgm.pause();
@@ -690,19 +690,19 @@ function startTypeTimer() {
 
 function downTime(n) {
   const timeNode = document.getElementById('time');
-  const arr = timeNode.innerText.split('秒 /');
+  const arr = timeNode.textContent.split('秒 /');
   const t = parseInt(arr[0]);
   const downedTime = t - n;
   if (downedTime < 0) {
-    timeNode.innerText = '0秒 /' + arr[1];
+    timeNode.textContent = '0秒 /' + arr[1];
   } else {
-    timeNode.innerText = downedTime + '秒 /' + arr[1];
+    timeNode.textContent = downedTime + '秒 /' + arr[1];
   }
 }
 
 
 function initTime() {
-  document.getElementById('time').innerText = gameTime + '秒 / ' + gameTime + '秒';
+  document.getElementById('time').textContent = gameTime + '秒 / ' + gameTime + '秒';
 }
 
 gradeOption.addEventListener('change', function() {
@@ -718,9 +718,9 @@ function scoring() {
   document.removeEventListener('keydown', typeEvent);
   var grade = gradeOption.radio.value;
   var typeSpeed = (normalCount / gameTime).toFixed(2);
-  document.getElementById('totalType').innerText = normalCount + errorCount;
-  document.getElementById('typeSpeed').innerText = typeSpeed;
-  document.getElementById('errorType').innerText = errorCount;
+  document.getElementById('totalType').textContent = normalCount + errorCount;
+  document.getElementById('typeSpeed').textContent = typeSpeed;
+  document.getElementById('errorType').textContent = errorCount;
   document.addEventListener('keydown', startKeyEvent, { once:true });
 }
 
