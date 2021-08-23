@@ -650,17 +650,17 @@ function countdown() {
       counter.textContent = t;
     } else {
       clearInterval(timer);
-      window.scrollTo({
-        top: document.getElementById("container").getBoundingClientRect().top +
-          document.documentElement.scrollTop,
-        behavior: "auto",
-      });
       document.getElementById('guideSwitch').disabled = false;
       document.getElementById('virtualKeyboard').disabled = false;
       infoPanel.classList.remove('d-none');
       playPanel.classList.remove('d-none');
       countPanel.classList.add('d-none');
       scorePanel.classList.add('d-none');
+      window.scrollTo({
+        top: document.getElementById("container").getBoundingClientRect().top +
+          document.documentElement.scrollTop,
+        behavior: "auto",
+      });
       typable();
       startTypeTimer();
       if (localStorage.getItem('bgm') == 1) {
