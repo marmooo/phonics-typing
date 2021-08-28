@@ -673,6 +673,7 @@ function countdown() {
 
 function startKeyEvent(event) {
   if (event.key == ' ' || event.key == 'Spacebar') {
+    document.removeEventListener("keydown", startKeyEvent);
     replay();
   }
 }
@@ -726,7 +727,7 @@ function scoring() {
   document.getElementById('totalType').textContent = normalCount + errorCount;
   document.getElementById('typeSpeed').textContent = typeSpeed;
   document.getElementById('errorType').textContent = errorCount;
-  document.addEventListener('keydown', startKeyEvent, { once:true });
+  document.addEventListener('keydown', startKeyEvent);
 }
 
 function changeMode() {
@@ -747,6 +748,6 @@ document.getElementById('mode').onclick = changeMode;
 document.getElementById('guideSwitch').onchange = toggleGuide;
 startButton.addEventListener('click', replay);
 document.addEventListener('keyup', upKeyEvent);
-document.addEventListener('keydown', startKeyEvent, { once:true });
+document.addEventListener('keydown', startKeyEvent);
 document.addEventListener('click', unlockAudio, { once:true, useCapture:true });
 
