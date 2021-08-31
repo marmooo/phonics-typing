@@ -722,8 +722,12 @@ function scoring() {
   countPanel.classList.add('d-none');
   scorePanel.classList.remove('d-none');
   document.removeEventListener('keydown', typeEvent);
+  let time = parseInt(document.getElementById("time").textContent);
+  if (time < gameTime) {
+    time = gameTime - time;
+  }
   var grade = gradeOption.radio.value;
-  var typeSpeed = (normalCount / gameTime).toFixed(2);
+  var typeSpeed = (normalCount / time).toFixed(2);
   document.getElementById('totalType').textContent = normalCount + errorCount;
   document.getElementById('typeSpeed').textContent = typeSpeed;
   document.getElementById('errorType').textContent = errorCount;
