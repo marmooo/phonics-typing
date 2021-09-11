@@ -1,4 +1,4 @@
-var CACHE_NAME = '2021-09-11 18:00';
+var CACHE_NAME = '2021-09-12 08:36';
 var urlsToCache = [
   '/phonica-typing/',
   '/phonica-typing/index.js',
@@ -10,8 +10,8 @@ var urlsToCache = [
   '/phonica-typing/keyboard.mp3',
   '/phonica-typing/favicon/original.svg',
   'https://marmooo.github.io/fonts/textar-light.woff2',
-  'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css',
-  'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js',
   'https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js',
   'https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css',
 ];
