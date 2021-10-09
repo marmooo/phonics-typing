@@ -422,8 +422,7 @@ function replay() {
 
 function calcAAOuterSize() {
   let height = document.documentElement.clientHeight;
-  height -= document.getElementById("headerNav").offsetHeight;
-  height -= document.getElementById("infoPanel").offsetHeight;
+  height -= document.getElementById("timePanel").offsetHeight;
   height -= document.getElementById("typePanel").offsetHeight;
   height -= document.getElementById("keyboard").offsetHeight;
   return height;
