@@ -546,7 +546,7 @@ function countdown() {
       countPanel.classList.add("d-none");
       scorePanel.classList.add("d-none");
       window.scrollTo({
-        top: document.getElementById("container").getBoundingClientRect().top +
+        top: document.getElementById("timePanel").getBoundingClientRect().top +
           document.documentElement.scrollTop,
         behavior: "auto",
       });
