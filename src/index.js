@@ -523,7 +523,7 @@ function typable() {
 
 function countdown() {
   typeIndex = normalCount = errorCount = solveCount = 0;
-  new bootstrap.Collapse(document.getElementById("gradeOption")).hide();
+  document.getElementById("gradeOption").classList.remove("show");
   document.getElementById("guideSwitch").disabled = true;
   document.getElementById("virtualKeyboard").disabled = true;
   infoPanel.classList.add("d-none");
