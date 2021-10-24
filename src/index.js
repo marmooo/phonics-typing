@@ -28,15 +28,13 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 const layout104 = {
   "default": [
-    "{esc} ` 1 2 3 4 5 6 7 8 9 0 -",
-    "{tab} q w e r t y u i o p [ ]",
+    "{tab} q w e r t y u i o p",
     "{lock} a s d f g h j k l ;",
     "{shift} z x c v b n m , .",
     "🌏 無変換 {space} 変換",
   ],
   "shift": [
-    "{esc} ~ ! @ # $ % ^ & * ( ) _",
-    "{tab} Q W E R T Y U I O P { }",
+    "{tab} Q W E R T Y U I O P",
     '{lock} A S D F G H J K L :',
     "{shift} Z X C V B N M < >",
     "🌏 無変換 {space} 変換",
@@ -44,14 +42,12 @@ const layout104 = {
 };
 const layout109 = {
   "default": [
-    "{esc} 1 2 3 4 5 6 7 8 9 0 -",
     "{tab} q w e r t y u i o p",
     "{lock} a s d f g h j k l ;",
     "{shift} z x c v b n m , .",
     "🌏 無変換 {space} 変換",
   ],
   "shift": [
-    "{esc} ! \" # $ % & ' ( ) =",
     "{tab} Q W E R T Y U I O P",
     "{lock} A S D F G H J K L +",
     "{shift} Z X C V B N M < >",
@@ -59,7 +55,6 @@ const layout109 = {
   ],
 };
 const keyboardDisplay = {
-  "{esc}": "Esc",
   "{tab}": "Tab",
   "{lock}": "Caps",
   "{shift}": "Shift",
@@ -74,8 +69,6 @@ const simpleKeyboard = new SimpleKeyboard.default({
   },
   onKeyPress: function (input) {
     switch (input) {
-      case "{esc}":
-        return typeEventKey("Esc");
       case "{space}":
         return typeEventKey(" ");
       case "無変換":
