@@ -261,7 +261,7 @@ function loadProblems() {
   fetch("data/" + grade + ".csv").then(function (response) {
     return response.text();
   }).then(function (csv) {
-    problems = csv.split("\n").slice(0, -1).map((line) => {
+    problems = csv.trim().split("\n").map((line) => {
       const [en, ja] = line.split(",");
       return { en: en, ja: ja };
     });
