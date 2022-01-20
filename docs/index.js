@@ -23,7 +23,7 @@ function showGuide(currNode){if(guide){let key=currNode.textContent;if(key==" ")
 function upKeyEvent(event){switch(event.key){case "Shift":case "CapsLock":if(guide){simpleKeyboard.setOptions({layoutName:"default"});showGuide(romaNode.childNodes[typeIndex]);}}}
 function typeEvent(event){if(event.key==" "||event.key=="Spacebar"){event.preventDefault();}
 typeEventKey(event.key);}
-function typeEventKey(key){const currNode=romaNode.childNodes[typeIndex];if(key.match(/^[^0-9]$/)){if(key==currNode.textContent){typeNormal(currNode);removeGuide(currNode);underlineSpace(currNode);}else{playAudio(incorrectAudio,0.3);errorCount+=1;}
+function typeEventKey(key){const currNode=romaNode.childNodes[typeIndex];if(/^[^0-9]$/.test(key)){if(key==currNode.textContent){typeNormal(currNode);removeGuide(currNode);underlineSpace(currNode);}else{playAudio(incorrectAudio,0.3);errorCount+=1;}
 if(typeIndex==romaNode.childNodes.length){nextProblem();if(solveCount>=15){typeIndex=0;clearInterval(typeTimer);bgm.pause();playAudio(endAudio);scoring();}}else{showGuide(romaNode.childNodes[typeIndex]);}}else{switch(key){case "NonConvert":[...romaNode.children].forEach((span)=>{span.classList.remove("d-none");});downTime(5);break;case "Convert":{const text=romaNode.textContent;loopVoice(text,1);break;}
 case "Shift":case "CapsLock":if(guide){simpleKeyboard.setOptions({layoutName:"shift"});showGuide(romaNode.childNodes[typeIndex]);}
 break;case "Escape":case "Esc":replay();break;}}}
