@@ -1,4 +1,4 @@
-var CACHE_NAME = '2022-02-06 22:15';
+var CACHE_NAME = '2022-02-24 00:40';
 var urlsToCache = [
   "/phonics-typing/",
   "/phonics-typing/index.js",
@@ -12,8 +12,7 @@ var urlsToCache = [
   "https://marmooo.github.io/fonts/textar-light.woff2",
   "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
   "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
-  "https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js",
-  "https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css",
+  "https://cdn.jsdelivr.net/npm/simple-keyboard@3.4.52/build/index.min.js",
 ];
 
 self.addEventListener("install", function (event) {
