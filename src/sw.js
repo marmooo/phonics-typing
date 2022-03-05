@@ -1,4 +1,4 @@
-var CACHE_NAME = '2022-03-05 11:20';
+var CACHE_NAME = '2022-03-06 01:00';
 var urlsToCache = [
   "/phonics-typing/",
   "/phonics-typing/index.js",
@@ -6,7 +6,6 @@ var urlsToCache = [
   "/phonics-typing/mp3/cat.mp3",
   "/phonics-typing/mp3/correct.mp3",
   "/phonics-typing/mp3/end.mp3",
-  "/phonics-typing/mp3/index.js",
   "/phonics-typing/mp3/keyboard.mp3",
   "/phonics-typing/favicon/original.svg",
   "https://marmooo.github.io/fonts/textar-light.woff2",
