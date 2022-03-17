@@ -35,7 +35,7 @@ const layout104 = {
   ],
   "shift": [
     "{tab} Q W E R T Y U I O P",
-    '{lock} A S D F G H J K L :',
+    "{lock} A S D F G H J K L :",
     "{shift} Z X C V B N M < >",
     "🌏 無変換 {space} 変換",
   ],
@@ -258,17 +258,17 @@ function loopVoice(text, n) {
 
 function loadProblems() {
   const grade = document.getElementById("gradeOption").radio.value;
-  fetch("data/" + grade + ".csv").then(function (response) {
-    return response.text();
-  }).then(function (csv) {
-    problems = csv.trim().split("\n").map((line) => {
-      const [en, ja] = line.split(",");
-      return { en: en, ja: ja };
+  fetch("data/" + grade + ".csv")
+    .then((response) => response.text())
+    .then((csv) => {
+      problems = csv.trim().split("\n").map((line) => {
+        const [en, ja] = line.split(",");
+        return { en: en, ja: ja };
+      });
+      problemCandidate = problems.slice();
+    }).catch(function (err) {
+      console.error(err);
     });
-    problemCandidate = problems.slice();
-  }).catch(function (err) {
-    console.error(err);
-  });
 }
 
 function typeNormal(currNode) {
@@ -343,7 +343,7 @@ function upKeyEvent(event) {
 
 function typeEvent(event) {
   if (event.key == " " || event.key == "Spacebar") {
-    event.preventDefault();  // ScrollLock
+    event.preventDefault(); // ScrollLock
   }
   typeEventKey(event.key);
 }
@@ -561,7 +561,7 @@ function countdown() {
 
 function startKeyEvent(event) {
   if (event.key == " " || event.key == "Spacebar") {
-    event.preventDefault();  // ScrollLock
+    event.preventDefault(); // ScrollLock
     document.removeEventListener("keydown", startKeyEvent);
     replay();
   }
