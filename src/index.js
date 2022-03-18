@@ -1,8 +1,10 @@
 const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
+const gamePanel = document.getElementById("gamePanel");
 const playPanel = document.getElementById("playPanel");
 const infoPanel = document.getElementById("infoPanel");
 const countPanel = document.getElementById("countPanel");
 const scorePanel = document.getElementById("scorePanel");
+const aaOuter = document.getElementById("aaOuter");
 const startButton = document.getElementById("startButton");
 const romaNode = document.getElementById("roma");
 const aa = document.getElementById("aa");
@@ -445,7 +447,7 @@ function resizeFontSize(node) {
   const font = style.fontFamily;
   const fontSize = parseFloat(style.fontSize);
   const lineHeight = parseFloat(style.lineHeight) / fontSize;
-  const nodeHeight = document.getElementById("playPanel").offsetHeight;
+  const nodeHeight = aaOuter.offsetHeight;
   const nodeWidth = infoPanel.clientWidth;
   const nodeRect = [nodeWidth, nodeHeight];
   const textRect = getTextRect(node.textContent, fontSize, font, lineHeight);
@@ -509,10 +511,8 @@ function countdown() {
   document.getElementById("gradeOption").classList.remove("show");
   document.getElementById("guideSwitch").disabled = true;
   document.getElementById("virtualKeyboard").disabled = true;
-  infoPanel.classList.add("d-none");
-  playPanel.classList.add("d-none");
+  gamePanel.classList.add("d-none");
   countPanel.classList.remove("d-none");
-  scorePanel.classList.add("d-none");
   counter.textContent = 3;
   const timer = setInterval(function () {
     const counter = document.getElementById("counter");
@@ -525,9 +525,11 @@ function countdown() {
       clearInterval(timer);
       document.getElementById("guideSwitch").disabled = false;
       document.getElementById("virtualKeyboard").disabled = false;
+      gamePanel.classList.remove("d-none");
+      countPanel.classList.add("d-none");
       infoPanel.classList.remove("d-none");
       playPanel.classList.remove("d-none");
-      countPanel.classList.add("d-none");
+      aaOuter.classList.remove("d-none");
       scorePanel.classList.add("d-none");
       resizeFontSize(aa);
       window.scrollTo({
@@ -589,6 +591,7 @@ function initTime() {
 function scoring() {
   infoPanel.classList.remove("d-none");
   playPanel.classList.add("d-none");
+  aaOuter.classList.add("d-none");
   countPanel.classList.add("d-none");
   scorePanel.classList.remove("d-none");
   document.removeEventListener("keydown", typeEvent);
