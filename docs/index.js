@@ -13,7 +13,7 @@ function loadAudios(){promises=[loadAudio("mp3/keyboard.mp3"),loadAudio("mp3/cor
 function loadVoices(){const allVoicesObtained=new Promise(function(resolve){let voices=speechSynthesis.getVoices();if(voices.length!==0){resolve(voices);}else{speechSynthesis.addEventListener("voiceschanged",function(){voices=speechSynthesis.getVoices();resolve(voices);});}});allVoicesObtained.then((voices)=>{englishVoices=voices.filter((voice)=>voice.lang=="en-US");});}
 loadVoices();function loopVoice(text,n){speechSynthesis.cancel();const msg=new SpeechSynthesisUtterance(text);msg.voice=englishVoices[Math.floor(Math.random()*englishVoices.length)];msg.lang="en-US";for(let i=0;i<n;i++){speechSynthesis.speak(msg);}}
 function loadProblems(){const grade=document.getElementById("gradeOption").radio.value;fetch("data/"+grade+".csv").then((response)=>response.text()).then((csv)=>{problems=csv.trim().split("\n").map((line)=>{const[en,ja]=line.split(",");return{en:en,ja:ja};});problemCandidate=problems.slice();}).catch(function(err){console.error(err);});}
-function typeNormal(currNode){currNode.classList.remove("d-none");playAudio(keyboardAudio);currNode.style.color="silver";typeIndex+=1;normalCount+=1;}
+function typeNormal(currNode){currNode.style.visibility="visible";playAudio(keyboardAudio);currNode.style.color="silver";typeIndex+=1;normalCount+=1;}
 function underlineSpace(currNode){if(currNode.textContent==" "){currNode.style.removeProperty("text-decoration");}
 const nextNode=currNode.nextElementSibling;if(nextNode&&nextNode.textContent==" "){nextNode.style.textDecoration="underline";}}
 function nextProblem(){playAudio(correctAudio);typeIndex=0;solveCount+=1;typable();}
@@ -24,7 +24,7 @@ function upKeyEvent(event){switch(event.key){case "Shift":case "CapsLock":if(gui
 function typeEvent(event){if(event.key==" "||event.key=="Spacebar"){event.preventDefault();}
 typeEventKey(event.key);}
 function typeEventKey(key){const currNode=romaNode.childNodes[typeIndex];if(/^[^0-9]$/.test(key)){if(key==currNode.textContent){typeNormal(currNode);removeGuide(currNode);underlineSpace(currNode);}else{playAudio(incorrectAudio,0.3);errorCount+=1;}
-if(typeIndex==romaNode.childNodes.length){nextProblem();if(solveCount>=15){typeIndex=0;clearInterval(typeTimer);bgm.pause();playAudio(endAudio);scoring();}}else{showGuide(romaNode.childNodes[typeIndex]);}}else{switch(key){case "NonConvert":[...romaNode.children].forEach((span)=>{span.classList.remove("d-none");});downTime(5);break;case "Convert":{const text=romaNode.textContent;loopVoice(text,1);break;}
+if(typeIndex==romaNode.childNodes.length){nextProblem();if(solveCount>=15){typeIndex=0;clearInterval(typeTimer);bgm.pause();playAudio(endAudio);scoring();}}else{showGuide(romaNode.childNodes[typeIndex]);}}else{switch(key){case "NonConvert":[...romaNode.children].forEach((span)=>{span.style.visibility="visible";});downTime(5);break;case "Convert":{const text=romaNode.textContent;loopVoice(text,1);break;}
 case "Shift":case "CapsLock":if(guide){simpleKeyboard.setOptions({layoutName:"shift"});showGuide(romaNode.childNodes[typeIndex]);}
 break;case "Escape":case "Esc":replay();break;}}}
 function replay(){clearInterval(typeTimer);removeGuide(romaNode.childNodes[typeIndex]);document.removeEventListener("keydown",typeEvent);initTime();loadProblems();countdown();typeIndex=normalCount=errorCount=solveCount=0;countPanel.classList.remove("d-none");scorePanel.classList.add("d-none");}
@@ -39,7 +39,7 @@ function getRandomInt(min,max){min=Math.ceil(min);max=Math.floor(max);return Mat
 function typable(){if(problemCandidate.length<=0){problemCandidate=problems.slice();}
 const problem=problemCandidate.splice(getRandomInt(0,problemCandidate.length),1)[0];aa.textContent=problem.ja;const roma=problem.en;if(mode.textContent=="EASY"){loopVoice(roma,1);}
 while(romaNode.firstChild){romaNode.removeChild(romaNode.firstChild);}
-for(let i=0;i<roma.length;i++){const span=document.createElement("span");if(mode.textContent!="EASY"){span.classList.add("d-none");}
+for(let i=0;i<roma.length;i++){const span=document.createElement("span");if(mode.textContent!="EASY"){span.style.visibility="hidden";}
 span.textContent=roma[i];romaNode.appendChild(span);}
 resizeFontSize(aa);showGuide(romaNode.childNodes[0]);}
 function countdown(){typeIndex=normalCount=errorCount=solveCount=0;document.getElementById("gradeOption").classList.remove("show");document.getElementById("guideSwitch").disabled=true;document.getElementById("virtualKeyboard").disabled=true;gamePanel.classList.add("d-none");countPanel.classList.remove("d-none");counter.textContent=3;const timer=setInterval(function(){const counter=document.getElementById("counter");const colors=["skyblue","greenyellow","violet","tomato"];if(parseInt(counter.textContent)>1){const t=parseInt(counter.textContent)-1;counter.style.backgroundColor=colors[t];counter.textContent=t;}else{clearInterval(timer);document.getElementById("guideSwitch").disabled=false;document.getElementById("virtualKeyboard").disabled=false;gamePanel.classList.remove("d-none");countPanel.classList.add("d-none");infoPanel.classList.remove("d-none");playPanel.classList.remove("d-none");aaOuter.classList.remove("d-none");scorePanel.classList.add("d-none");resizeFontSize(aa);window.scrollTo({top:document.getElementById("timePanel").getBoundingClientRect().top+

@@ -270,7 +270,7 @@ function loadProblems() {
 }
 
 function typeNormal(currNode) {
-  currNode.classList.remove("d-none");
+  currNode.style.visibility = "visible";
   playAudio(keyboardAudio);
   currNode.style.color = "silver";
   typeIndex += 1;
@@ -378,7 +378,7 @@ function typeEventKey(key) {
     switch (key) {
       case "NonConvert":
         [...romaNode.children].forEach((span) => {
-          span.classList.remove("d-none");
+          span.style.visibility = "visible";
         });
         downTime(5);
         break;
@@ -497,7 +497,7 @@ function typable() {
   for (let i = 0; i < roma.length; i++) {
     const span = document.createElement("span");
     if (mode.textContent != "EASY") {
-      span.classList.add("d-none");
+      span.style.visibility = "hidden";
     }
     span.textContent = roma[i];
     romaNode.appendChild(span);
