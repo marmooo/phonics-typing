@@ -117,9 +117,9 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
       <div id="gamePanel" class="d-flex flex-column">
         <div id="infoPanel">
           <div class="row">
-            <div class="col-sm pb-3">
-              <p>フォニックスとタイピングを<ruby>同時<rt>どうじ</rt></ruby>に<ruby>学<rt>まな</rt></ruby>ぶアプリです。
-              15こずつ<ruby>英単語<rt>えいたんご</rt></ruby>をおぼえよう！
+            <div class="col-md pb-3">
+              <p>フォニックスとタイピングを同時に学ぶアプリです。
+              15こずつ英単語をおぼえよう！
               </p>
               <h6>キーバインド</h6>
               <table class="table table-sm table-striped">
@@ -127,123 +127,188 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
                 <tr><td><kbd>変換</kbd><kbd class="ms-1">Alt Right</kbd></td><td>音声読み上げ</td></tr>
               </table>
             </div>
-            <div id="timePanel" class="col-sm text-center">
+            <div id="timePanel" class="col-md text-center">
               <div class="alert alert-info">
-                <div class="row flex-wrap">
-                  <div class="col p-1 h5 text-nowrap">
-                    <label><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>:</label>
-                    <span id="time" class="ms-1">120秒 / 120秒</span>
+                <div class="d-flex flex-wrap justify-content-center">
+                  <div class="h5 text-nowrap me-4 notranslate">
+                    <span id="time">120</span>
+                    <span> / 120 sec</span>
                   </div>
-                  <div class="col p-1 m-auto">
-                    <button class="btn btn-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#gradeOption"
+                  <div>
+                    <button class="btn btn-secondary btn-sm"
+                      data-bs-toggle="collapse" data-bs-target="#gradeOption"
                       aria-expanded="false" aria-controls="gradeOption">コース</button>
-                    <button id="mode" class="btn btn-secondary btn-sm ms-1">EASY</button>
-                    <div class="form-check form-check-inline form-switch text-nowrap ms-1 py-1">
+                    <button id="mode" class="btn btn-secondary btn-sm ms-1 notranslate">EASY</button>
+                    <div class="form-check form-check-inline form-switch text-nowrap">
                       <input class="form-check-input" type="checkbox" id="guideSwitch">
                       <label class="form-check-label" for="guideSwitch">ガイド</label>
                     </div>
                   </div>
                 </div>
-                <div>
-                  <button id="startButton" class="btn btm-sm btn-primary">SPACE: スタート / ESC: リセット</button>
+                <div class="mt-2">
+                  <button id="startButton" class="btn btm-sm btn-primary">
+                    <kbd>Space</kbd>
+                    <span class="ms-1">スタート</span>
+                    <kbd class="ms-3">Esc</kbd>
+                    <span class="ms-1">リセット</span>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <form id="gradeOption" name="gradeOption" class="collapse mb-3 p-2 text-center border rounded">
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="a1" checked>a (あ)
+              <input class="form-check-input" type="radio" name="radio" value="a1" checked>
+              <span class="notranslate">a</span>
+              <span class="ms-1">(あ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="u">u (あ)
+              <input class="form-check-input" type="radio" name="radio" value="u">
+              <span class="notranslate">u</span>
+              <span class="ms-1">(あ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ar">ar (あー)
+              <input class="form-check-input" type="radio" name="radio" value="ar">
+              <span class="notranslate">ar</span>
+              <span class="ms-1">(あー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ur-ir-er">ur ir er (あー)
+              <input class="form-check-input" type="radio" name="radio" value="ur-ir-er">
+              <span class="notranslate">ur ir er</span>
+              <span class="ms-1">(あー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="o-oo-ou">o oo ou (あ)
+              <input class="form-check-input" type="radio" name="radio" value="o-oo-ou">
+              <span class="notranslate">o oo ou</span>
+              <span class="ms-1">(あ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="i-ie">i ie (あぃ)
+              <input class="form-check-input" type="radio" name="radio" value="i-ie">
+              <span class="notranslate">i ie</span>
+              <span class="ms-1">(あぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="igh">igh (あぃ)
+              <input class="form-check-input" type="radio" name="radio" value="igh">
+              <span class="notranslate">igh</span>
+              <span class="ms-1">(あぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="y">y (あぃ)
+              <input class="form-check-input" type="radio" name="radio" value="y">
+              <span class="notranslate">y</span>
+              <span class="ms-1">(あぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ou-ow">ou ow (あぅ)
+              <input class="form-check-input" type="radio" name="radio" value="ou-ow">
+              <span class="notranslate">ou ow</span>
+              <span class="ms-1">(あぅ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="i">i (い)
+              <input class="form-check-input" type="radio" name="radio" value="i">
+              <span class="notranslate">i</span>
+              <span class="ms-1">(い)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ee-ea">ee ea (いー)
+              <input class="form-check-input" type="radio" name="radio" value="ee-ea">
+              <span class="notranslate">ee ea</span>
+              <span class="ms-1">(いー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="y-ey">y ey (いー)
+              <input class="form-check-input" type="radio" name="radio" value="y-ey">
+              <span class="notranslate">y ey</span>
+              <span class="ms-1">(いー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ie-ei">ie ei (いー)
+              <input class="form-check-input" type="radio" name="radio" value="ie-ei">
+              <span class="notranslate">ie ei</span>
+              <span class="ms-1">(いー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="eer-ear">eer ear (いぁ)
+              <input class="form-check-input" type="radio" name="radio" value="eer-ear">
+              <span class="notranslate">eer ear</span>
+              <span class="ms-1">(いぁ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="oo1">oo (う)
+              <input class="form-check-input" type="radio" name="radio" value="oo1">
+              <span class="notranslate">oo</span>
+              <span class="ms-1">(う)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="oo2">oo (うー)
+              <input class="form-check-input" type="radio" name="radio" value="oo2">
+              <span class="notranslate">oo</span>
+              <span class="ms-1">(うー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ew">ew (うー ゆー)
+              <input class="form-check-input" type="radio" name="radio" value="ew">
+              <span class="notranslate">ew</span>
+              <span class="ms-1">(うー ゆー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="u-ue">u ue (ゆー うー)
+              <input class="form-check-input" type="radio" name="radio" value="u-ue">
+              <span class="notranslate">u ue</span>
+              <span class="ms-1">(ゆー うー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="e-ea">e ea (え)
+              <input class="form-check-input" type="radio" name="radio" value="e-ea">
+              <span class="notranslate">e ea</span>
+              <span class="ms-1">(え)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="air-are">air are (えぁ)
+              <input class="form-check-input" type="radio" name="radio" value="air-are">
+              <span class="notranslate">air are</span>
+              <span class="ms-1">(えぁ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="a2">a (えぃ)
+              <input class="form-check-input" type="radio" name="radio" value="a2">
+              <span class="notranslate">a</span>
+              <span class="ms-1">(えぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="ai-ay">ai ay (えぃ)
+              <input class="form-check-input" type="radio" name="radio" value="ai-ay">
+              <span class="notranslate">ai ay</span>
+              <span class="ms-1">(えぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="eigh">eigh (えぃ)
+              <input class="form-check-input" type="radio" name="radio" value="eigh">
+              <span class="notranslate">eigh</span>
+              <span class="ms-1">(えぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="o">o (o)
+              <input class="form-check-input" type="radio" name="radio" value="o">
+              <span class="notranslate">o</span>
+              <span class="ms-1">お</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="or-au-aw">or au aw (おー)
+              <input class="form-check-input" type="radio" name="radio" value="or-au-aw">
+              <span class="notranslate">or au aw</span>
+              <span class="ms-1">(おー)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="all">all (おーる)
+              <input class="form-check-input" type="radio" name="radio" value="all">
+              <span class="notranslate">all</span>
+              <span class="ms-1">(おーる)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="oi-oy">oi oy (おぃ)
+              <input class="form-check-input" type="radio" name="radio" value="oi-oy">
+              <span class="notranslate">oi oy</span>
+              <span class="ms-1">(おぃ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="o-oa-ow">o oa ow (おぅ)
+              <input class="form-check-input" type="radio" name="radio" value="o-oa-ow">
+              <span class="notranslate">o oa ow</span>
+              <span class="ms-1">(おぅ)</span>
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="silent-e">サイレントE
+              <input class="form-check-input" type="radio" name="radio" value="silent-e">
+              サイレントE
             </label>
             <label class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="radio" value="th">th (す ず)
+              <input class="form-check-input" type="radio" name="radio" value="th">
+              <span class="notranslate">th</span>
+              <span class="ms-1">(す ず)</span>
             </label>
           </form>
         </div>
-        <div id="aaOuter" class="flex-grow-1">
+        <div id="aaOuter" class="flex-grow-1 notranslate">
           <pre id="aa" class="aa">
 　　　　　　　　　　Phonics！
 :::/＼＼　　　　　　　　　　　　　　　　　　　／ 　／　／ヽ::::::::::::
@@ -264,23 +329,28 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
 　　　　　　　　::::::::::::::::::....::....::. 　ｶカ 　＠...::::::::::::::::
           </pre>
         </div>
-        <div id="playPanel">
+        <div id="playPanel" class="notranslate">
           <div id="typePanel" class="alert alert-info mb-0 h1 text-center">
             <div id="roma">phoenix</div>
           </div>
           <div id="keyboard" class="d-none simple-keyboard"></div>
         </div>
         <div id="scorePanel" class="text-center pb-3 d-none">
-          <h3 class="pt-3">タイピング結果</h3>
-          <pre class="aa">　　 　 ,､,,..._
+          <h3 class="pt-3">スコア</h3>
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="notranslate">
+              <pre class="aa">　　 　 ,､,,..._
   　　　 ﾉ　・　ヽ
   　　 /　:::::　　 i彡 ⌒ ミ
-  　　/　:::::　　　(´・ω・`)　　スコアだよ！
+  　　/　:::::　　　(´・ω・`)
   　 ,i　::::::　　　 　と､　　）
   　 |　::::　 　　　　　（_ノ、
   　 !　:::::..　　 　　　　　ﾉ
   　 `ー――――― '
-          </pre>
+              </pre>
+            </div>
+            <div class="ps-1">スコアだよ！</div>
+          </div>
           <table class="table table-striped">
             <tr><td>総タイプ数</td><td><span id="totalType"></span> <span>回</span></td></tr>
             <tr><td>スピード</td><td><span id="typeSpeed"></span> <span>回/秒</span></td></tr>
@@ -288,7 +358,7 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
           </table>
         </div>
       </div>
-      <div id="countPanel" class="text-center d-none">
+      <div id="countPanel" class="text-center d-none notranslate">
         <div id="counter"></div>
         <pre class="aa">
 
