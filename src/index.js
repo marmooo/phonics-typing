@@ -8,9 +8,10 @@ const aaOuter = document.getElementById("aaOuter");
 const startButton = document.getElementById("startButton");
 const romaNode = document.getElementById("roma");
 const aa = document.getElementById("aa");
-const gameTime = 120;
 const tmpCanvas = document.createElement("canvas");
 const mode = document.getElementById("mode");
+const gameTime = 120;
+let playing;
 let typeTimer;
 // https://dova-s.jp/bgm/play14909.html
 const bgm = new Audio("mp3/bgm.mp3");
@@ -354,6 +355,34 @@ function typeEvent(event) {
 }
 
 function typeEventKey(key) {
+  switch (key) {
+    case "NonConvert":
+      [...romaNode.children].forEach((span) => {
+        span.style.visibility = "visible";
+      });
+      downTime(5);
+      return;
+    case "Convert": {
+      const text = romaNode.textContent;
+      loopVoice(text, 1);
+      return;
+    }
+    case "Shift":
+    case "CapsLock":
+      if (guide) {
+        simpleKeyboard.setOptions({ layoutName: "shift" });
+        showGuide(romaNode.childNodes[typeIndex]);
+      }
+      return;
+    case "Escape":
+      replay();
+      return;
+    case " ":
+      if (!playing) {
+        replay();
+        return;
+      }
+  }
   const currNode = romaNode.childNodes[typeIndex];
   if (/^[^0-9]$/.test(key)) {
     if (key == currNode.textContent) {
@@ -381,38 +410,12 @@ function typeEventKey(key) {
     } else {
       showGuide(romaNode.childNodes[typeIndex]);
     }
-  } else {
-    switch (key) {
-      case "NonConvert":
-        [...romaNode.children].forEach((span) => {
-          span.style.visibility = "visible";
-        });
-        downTime(5);
-        break;
-      case "Convert": {
-        const text = romaNode.textContent;
-        loopVoice(text, 1);
-        break;
-      }
-      case "Shift":
-      case "CapsLock":
-        if (guide) {
-          simpleKeyboard.setOptions({ layoutName: "shift" });
-          showGuide(romaNode.childNodes[typeIndex]);
-        }
-        break;
-      case "Escape":
-      case "Esc":
-        replay();
-        break;
-    }
   }
 }
 
 function replay() {
   clearInterval(typeTimer);
   removeGuide(romaNode.childNodes[typeIndex]);
-  document.removeEventListener("keydown", typeEvent);
   initTime();
   loadProblems();
   countdown();
@@ -514,6 +517,7 @@ function typable() {
 }
 
 function countdown() {
+  playing = true;
   typeIndex = normalCount = errorCount = solveCount = 0;
   document.getElementById("gradeOption").classList.remove("show");
   document.getElementById("guideSwitch").disabled = true;
@@ -554,14 +558,6 @@ function countdown() {
   }, 1000);
 }
 
-function startKeyEvent(event) {
-  if (event.key == " " || event.key == "Spacebar") {
-    event.preventDefault(); // ScrollLock
-    document.removeEventListener("keydown", startKeyEvent);
-    replay();
-  }
-}
-
 function startTypeTimer() {
   const timeNode = document.getElementById("time");
   typeTimer = setInterval(function () {
@@ -596,12 +592,12 @@ function initTime() {
 }
 
 function scoring() {
+  playing = false;
   infoPanel.classList.remove("d-none");
   playPanel.classList.add("d-none");
   aaOuter.classList.add("d-none");
   countPanel.classList.add("d-none");
   scorePanel.classList.remove("d-none");
-  document.removeEventListener("keydown", typeEvent);
   let time = parseInt(document.getElementById("time").textContent);
   if (time < gameTime) {
     time = gameTime - time;
@@ -610,7 +606,6 @@ function scoring() {
   document.getElementById("totalType").textContent = normalCount + errorCount;
   document.getElementById("typeSpeed").textContent = typeSpeed;
   document.getElementById("errorType").textContent = errorCount;
-  document.addEventListener("keydown", startKeyEvent);
 }
 
 function changeMode() {
@@ -633,7 +628,7 @@ document.getElementById("mode").onclick = changeMode;
 document.getElementById("guideSwitch").onchange = toggleGuide;
 startButton.addEventListener("click", replay);
 document.addEventListener("keyup", upKeyEvent);
-document.addEventListener("keydown", startKeyEvent);
+document.addEventListener("keydown", typeEvent);
 document.addEventListener("click", unlockAudio, {
   once: true,
   useCapture: true,
