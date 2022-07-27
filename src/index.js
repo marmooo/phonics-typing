@@ -539,7 +539,6 @@ function countdown() {
       gamePanel.classList.remove("d-none");
       countPanel.classList.add("d-none");
       infoPanel.classList.remove("d-none");
-      gamePanel.classList.remove("d-none");
       aaOuter.classList.remove("d-none");
       scorePanel.classList.add("d-none");
       resizeFontSize(aa);
