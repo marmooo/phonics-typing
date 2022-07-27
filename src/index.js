@@ -510,6 +510,7 @@ function typable() {
 }
 
 function countdown() {
+  if (playing) return;
   playing = true;
   typeIndex =
     normalCount =
