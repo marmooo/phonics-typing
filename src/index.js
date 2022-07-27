@@ -68,10 +68,10 @@ const keyboardDisplay = {
 const simpleKeyboard = new SimpleKeyboard.default({
   layout: (navigator.language == "ja") ? layout109 : layout104,
   display: keyboardDisplay,
-  onInit: function () {
+  onInit: () => {
     document.getElementById("keyboard").classList.add("d-none");
   },
-  onKeyPress: function (input) {
+  onKeyPress: (input) => {
     switch (input) {
       case "{space}":
         return typeEventKey(" ");
@@ -219,13 +219,13 @@ function loadAudios() {
 
 function loadVoices() {
   // https://stackoverflow.com/questions/21513706/
-  const allVoicesObtained = new Promise(function (resolve) {
+  const allVoicesObtained = new Promise((resolve) => {
     let voices = speechSynthesis.getVoices();
     if (voices.length !== 0) {
       resolve(voices);
     } else {
       let supported = false;
-      speechSynthesis.addEventListener("voiceschanged", function () {
+      speechSynthesis.addEventListener("voiceschanged", () => {
         supported = true;
         voices = speechSynthesis.getVoices();
         resolve(voices);
@@ -263,7 +263,7 @@ function loadProblems() {
         return { en: en, ja: ja };
       });
       problemCandidate = problems.slice();
-    }).catch(function (err) {
+    }).catch((err) => {
       console.error(err);
     });
 }
@@ -339,10 +339,13 @@ function upKeyEvent(event) {
 }
 
 function typeEvent(event) {
-  if (event.key == " " || event.key == "Spacebar") {
-    event.preventDefault(); // ScrollLock
+  switch (event.code) {
+    case "Space":
+      event.preventDefault();
+      // falls through
+    default:
+      return typeEventKey(event.key);
   }
-  typeEventKey(event.key);
 }
 
 function typeEventKey(key) {
@@ -525,7 +528,7 @@ function countdown() {
   infoPanel.classList.add("d-none");
   countPanel.classList.remove("d-none");
   counter.textContent = 3;
-  const timer = setInterval(function () {
+  const timer = setInterval(() => {
     const counter = document.getElementById("counter");
     const colors = ["skyblue", "greenyellow", "violet", "tomato"];
     if (parseInt(counter.textContent) > 1) {
@@ -558,7 +561,7 @@ function countdown() {
 
 function startTypeTimer() {
   const timeNode = document.getElementById("time");
-  typeTimer = setInterval(function () {
+  typeTimer = setInterval(() => {
     const t = parseInt(timeNode.textContent);
     if (t > 0) {
       timeNode.textContent = t - 1;
@@ -615,7 +618,7 @@ resizeFontSize(aa);
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("toggleBGM").onclick = toggleBGM;
 document.getElementById("virtualKeyboard").onclick = toggleKeyboard;
-window.addEventListener("resize", function () {
+window.addEventListener("resize", () => {
   resizeFontSize(aa);
 });
 document.getElementById("mode").onclick = changeMode;
