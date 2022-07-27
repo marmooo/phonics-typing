@@ -539,7 +539,6 @@ function countdown() {
       gamePanel.classList.remove("d-none");
       countPanel.classList.add("d-none");
       infoPanel.classList.remove("d-none");
-      aaOuter.classList.remove("d-none");
       scorePanel.classList.add("d-none");
       resizeFontSize(aa);
       window.scrollTo({
@@ -591,7 +590,6 @@ function scoring() {
   playing = false;
   infoPanel.classList.remove("d-none");
   gamePanel.classList.add("d-none");
-  aaOuter.classList.add("d-none");
   countPanel.classList.add("d-none");
   scorePanel.classList.remove("d-none");
   let time = parseInt(document.getElementById("time").textContent);
