@@ -154,8 +154,8 @@ function toggleKeyboard() {
   }
 }
 
-function toggleGuide() {
-  if (this.checked) {
+function toggleGuide(event) {
+  if (event.target.checked) {
     guide = true;
   } else {
     guide = false;
@@ -617,11 +617,11 @@ function scoring() {
   document.getElementById("errorType").textContent = errorCount;
 }
 
-function changeMode() {
-  if (this.textContent == "EASY") {
-    this.textContent = "HARD";
+function changeMode(event) {
+  if (event.target.textContent == "EASY") {
+    event.target.textContent = "HARD";
   } else {
-    this.textContent = "EASY";
+    event.target.textContent = "EASY";
   }
 }
 
