@@ -274,8 +274,8 @@ function loadProblems() {
     .then((response) => response.text())
     .then((csv) => {
       problems = csv.trim().split("\n").map((line) => {
-        const [en, ja] = line.split(",");
-        return { en: en, ja: ja };
+        const [en, ja, emoji] = line.split(",");
+        return { en: en, ja: ja, emoji: emoji };
       });
       problemCandidate = problems.slice();
     }).catch((err) => {
@@ -504,7 +504,7 @@ function typable() {
   }
   const problem =
     problemCandidate.splice(getRandomInt(0, problemCandidate.length), 1)[0];
-  aa.textContent = problem.ja;
+  aa.textContent = problem.emoji + "\n" + problem.ja;
   const roma = problem.en;
   if (mode.textContent == "EASY") {
     loopVoice(roma, 1);
@@ -556,6 +556,7 @@ function countdown() {
       countPanel.classList.add("d-none");
       infoPanel.classList.remove("d-none");
       scorePanel.classList.add("d-none");
+      aa.classList.add("text-center");
       resizeFontSize(aa);
       window.scrollTo({
         top: document.getElementById("typePanel").getBoundingClientRect().top,
