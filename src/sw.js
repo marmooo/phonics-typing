@@ -9,7 +9,7 @@ const urlsToCache = [
   "/phonics-typing/mp3/keyboard.mp3",
   "/phonics-typing/favicon/favicon.svg",
   "https://marmooo.github.io/fonts/textar-light.woff2",
-  "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js",
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js",
   "https://cdn.jsdelivr.net/npm/simple-keyboard@3.4.52/build/index.min.js",
 ];
 
