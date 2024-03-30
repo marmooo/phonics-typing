@@ -1,3 +1,5 @@
+import { Collapse } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/+esm";
+
 const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
 const gamePanel = document.getElementById("gamePanel");
 const infoPanel = document.getElementById("infoPanel");
@@ -269,8 +271,8 @@ function loopVoice(text, n) {
 }
 
 function loadProblems() {
-  const grade = document.getElementById("gradeOption").radio.value;
-  fetch("data/" + grade + ".csv")
+  const course = document.getElementById("courseOption").radio.value;
+  fetch("data/" + course + ".csv")
     .then((response) => response.text())
     .then((csv) => {
       problems = csv.trim().split("\n").map((line) => {
@@ -527,7 +529,7 @@ function countdown() {
     errorCount =
     solveCount =
       0;
-  document.getElementById("gradeOption").classList.remove("show");
+  document.getElementById("courseOption").classList.remove("show");
   document.getElementById("guideSwitch").disabled = true;
   document.getElementById("virtualKeyboard").disabled = true;
   gamePanel.classList.add("d-none");
@@ -623,6 +625,7 @@ function changeMode(event) {
 
 resizeFontSize(aa);
 
+new Collapse(document.getElementById("courseOption"), { toggle: false });
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("toggleBGM").onclick = toggleBGM;
 document.getElementById("virtualKeyboard").onclick = toggleKeyboard;
