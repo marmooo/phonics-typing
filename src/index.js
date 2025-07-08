@@ -570,7 +570,7 @@ function countdown() {
       aa.classList.add("text-center");
       resizeFontSize(aa);
       globalThis.scrollTo({
-        top: document.getElementById("typePanel").getBoundingClientRect().top,
+        top: document.getElementById("aaOuter").getBoundingClientRect().top,
         behavior: "auto",
       });
       typable();
